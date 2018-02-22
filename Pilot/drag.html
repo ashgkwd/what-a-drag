@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>It's such a drag</title>
+</head>
+<body>
+    <div class="box" ondrop="gotcha();" ondragover="prevent();">
+        <div class="drag-me" ondragstart="a();" draggable="true">Such</div>
+    </div>
+
+    <script>
+        const dropAt = {x: 0, y: 0};
+
+        function gotcha(e) {
+            console.log("i got it");
+            e.preventDefault();
+            const me = document.querySelector(".drag-me");            
+            me.innerHTML = "Such";
+            document.body.removeEventListener('mousemove', onMouseUpdate);
+        }
+
+        function prevent(e) {
+            console.log("prevent");
+            e.preventDefault();
+        }
+
+        function a() {
+            return false;
+        }
+
+        function start() {
+            console.log("a is called");
+            const me = document.querySelector(".drag-me");
+            me.innerHTML = "A Drag";
+            document.body.addEventListener('mousemove', onMouseUpdate, false);
+        }
+
+        function move() {
+            const me = document.querySelector(".drag-me");
+            me.style.top = (dropAt.y - 10) + "px";
+            me.style.left = (dropAt.x - 10) + "px";
+        }
+
+        document.querySelector(".drag-me").addEventListener('mouseup', gotcha, false);
+        document.querySelector(".drag-me").addEventListener('mousedown', start, false);
+
+        function onMouseUpdate(e) {
+            e.preventDefault();
+            console.log("window mousemove");
+            dropAt.x = e.clientX;
+            dropAt.y = e.clientY;
+            move();
+        }
+    </script>
+
+    <style>
+        .drag-me {
+            font-family: sans-serif;
+            background-color: peru;
+            color: black;
+            border-radius: 4px;
+            border-width: 0;
+            padding: 15px 10px;
+            font-size: xx-large;
+            display: inline-block;
+            cursor: pointer;
+            position: absolute;
+        }
+
+        .box {
+            height: 100vh;
+            width: 100vw;
+            background-color: snow;
+        }
+    </style>
+</body>
+</html>
