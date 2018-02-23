@@ -6,118 +6,44 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Calculator</title>
 	<style>
-	body{
-		text-align: center;
-	}
-	input#text {
-		height: 80px;
-		width: 300px;
-		font-size: 50px;
-	} 
-	button {
-	}
-	input[type=button]{
-		width: 80px;
-		height: 80px;
-		font-size: 50px;
-		margin: 10px;
 
-	}
-</style>
+		body {
+			background-color: burlywood;
+		}
+
+		#app {
+			width: inherit;
+			min-height: inherit;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.row {
+			display: flex;
+			flex-direction: row;
+		}
+		
+		.output {
+			display: block;
+			height: 80px;
+			width: 300px;
+			font-size: 50px;
+			background-color: blanchedalmond;
+		}
+		
+		.button {
+			width: 80px;
+			height: 80px;
+			font-size: 50px;
+			margin: 10px;
+		}
+
+	</style>
 </head>
 <body>
-	<div app="app">
-		<div id="store"></div>
-		<input type="text" value="" id="text"/>
-		<br>
-		<input type="button" value="1" id="button1" />​
-		<input type="button" value="2" id="button2" />​
-		<input type="button" value="3" id="button3" />​
-		<br>
-		<input type="button" value="4" id="button4" />​
-		<input type="button" value="5" id="button5" />​
-		<input type="button" value="6" id="button6" />​
-		<br>
-		<input type="button" value="7" id="button7" />​
-		<input type="button" value="8" id="button8" />​
-		<input type="button" value="9" id="button9" />​
-		<br>
-		<input type="button" value="0" id="button0" />​
-		<input type="button" value="+" id="plusbutton" />​
-		<input type="button" value="-" id="minusbutton" />​
-		<br>
-		<input type="button" value="=" id="answer" />​
-	</div>
-	<script>
-		var answer = 0;
-		var val1, val2, op=1;
-		document.getElementById("button1").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			text.value += '1';
-		});
-		document.getElementById("button2").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			text.value += '2';
-		});
-		document.getElementById("button3").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			text.value += '3';
-		});
-		document.getElementById("button4").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			text.value += '4';
-		});
-		document.getElementById("button5").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			text.value += '5';
-		});
-		document.getElementById("button6").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			text.value += '6';
-		});
-		document.getElementById("button7").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			text.value += '7';
-		});
-		document.getElementById("button8").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			text.value += '8';
-		});
-		document.getElementById("button9").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			text.value += '9';
-		});
-		document.getElementById("button0").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			text.value += '0';
-		});
-		document.getElementById("plusbutton").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			val1 = parseInt(text.value);
-			text.value = '';
-			op = '+';
-		});
-		document.getElementById("minusbutton").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			val1 = parseInt(text.value);
-			op = '-';
-			text.value = '';
-		});
-		document.getElementById("answer").addEventListener('click', function () {
-			var text = document.getElementById('text');
-			val2 = parseInt(text.value);
-			if(op== '+')
-			{
-				answer = val1 + val2;
-			} else if(op== '-')
-			{
-				answer = val1 - val2;
-			}
-			
-			
-			text.value = answer;
-			op = 0;
-		});
-	</script>
+	<div id="app"></div>
+	<script src="./app.js"></script>
 </body>
 </html>
